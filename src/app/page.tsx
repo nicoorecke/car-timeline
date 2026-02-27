@@ -66,7 +66,7 @@ export default function Home() {
         {/* Header */}
         <header className={styles.header}>
           <div className={styles.headerTop}>
-            <span className={styles.headerTag}>// ARCHIVO AUTOMOTOR</span>
+            <span className={styles.headerTag}>ARCHIVO AUTOMOTOR</span>
             <span className={styles.headerTag}>ARGENTINA</span>
           </div>
           <h1 className={styles.title}>

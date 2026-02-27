@@ -70,7 +70,7 @@ export default function ParticleBackground({ accentColor }: ParticleBackgroundPr
     window.addEventListener("mousemove", handleMouseMove);
 
     // Animation
-    let frameId: number;
+    let frameId = 0;
     const clock = new THREE.Clock();
 
     const animate = () => {
@@ -107,15 +107,16 @@ export default function ParticleBackground({ accentColor }: ParticleBackgroundPr
     };
     window.addEventListener("resize", handleResize);
 
-    sceneRef.current = { renderer, scene, camera, particles, frameId };
+    sceneRef.current = { renderer, scene, camera, particles, frameId: 0 };
 
+    const mountNode = mountRef.current;
     return () => {
       cancelAnimationFrame(frameId);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
       renderer.dispose();
-      if (mountRef.current) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountNode) {
+        mountNode.removeChild(renderer.domElement);
       }
     };
   }, []);

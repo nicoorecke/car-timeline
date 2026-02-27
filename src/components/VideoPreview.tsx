@@ -37,7 +37,7 @@ export default function VideoPreview({ car, isHovered, onHover, index }: VideoPr
       .then((r) => r.json())
       .then((data) => setOEmbed(data))
       .catch(() => setOEmbed(null));
-  }, [car.videoId]);
+  }, [youtubeUrl]);
 
   const handleClick = () => {
     window.open(youtubeUrl, "_blank", "noopener,noreferrer");
@@ -61,6 +61,7 @@ export default function VideoPreview({ car, isHovered, onHover, index }: VideoPr
 
       {/* Thumbnail */}
       <div className={styles.thumbnailWrap}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={thumbnailUrl}
           alt={car.name}

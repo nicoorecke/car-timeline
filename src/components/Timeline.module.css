@@ -1,0 +1,95 @@
+/* src/components/Timeline.module.css */
+
+.timelineWrap {
+  position: relative;
+  width: 100%;
+  /* height is set inline via JS */
+}
+
+.line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #2a2a2a 5%, #2a2a2a 95%, transparent);
+}
+
+/* Each marker anchors at its x position */
+.marker {
+  position: absolute;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+  background: #111;
+  flex-shrink: 0;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.marker.active .dot {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.tick {
+  width: 1px;
+  background: #252525;
+  flex-shrink: 0;
+  transition: background 0.25s;
+}
+
+.marker.active .tick {
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.label {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.year {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: #444;
+  letter-spacing: 0.5px;
+  transition: color 0.25s;
+  flex-shrink: 0;
+}
+
+.marker.active .year {
+  color: var(--accent);
+}
+
+.name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #2a2a2a;
+  transition: color 0.25s;
+}
+
+.marker.active .name {
+  color: #ccc;
+}
+
+.startEnd {
+  position: absolute;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 8px;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
